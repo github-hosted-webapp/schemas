@@ -1,0 +1,28 @@
+{
+    "tabWidth": 4,
+    "endOfLine": "lf",
+    "trailingComma": "all",
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "parser": "markdown",
+                "printWidth": 70,
+                "useTabs": false,
+                "trailingComma": "none",
+                "proseWrap": "never"
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "parser": "json",
+                "tabWidth": 4,
+                "quoteProps": "consistent",
+                "singleQuote": false,
+                "trailingComma": "none"
+            }
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+{
+    "*.{js,jsx,mjs,ts,tsx,md,json,yml,yaml,html,htm,bash,sh}": [
+        "prettier --loglevel warn --write"
+    ]
+}

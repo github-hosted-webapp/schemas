@@ -1,0 +1,47 @@
+{
+    "name": "schemas",
+    "version": "0.0.0",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/github-hosted-webapp/schemas#readme",
+    "bugs": {
+        "url": "https://github.com/github-hosted-webapp/schemas/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/github-hosted-webapp/schemas.git"
+    },
+    "license": "MIT",
+    "author": "Rik Hoffbauer <62353999+rikhoffbauer@users.noreply.github.com> (https://github.com/rikhoffbauer)",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "build": "npm run generate:version-file && npm run generate:schemas && npm run format:schemas && tsc",
+        "format": "sort-package-json && npm run prettier",
+        "format:schemas": "prettier --loglevel warn --write \"schemas/**/*.json\"",
+        "generate:schemas": "ts-node scripts/generate-schemas.ts",
+        "generate:version-file": "ts-node scripts/generate-version-file.ts",
+        "prettier": "prettier --loglevel warn --write \"**/*.{md,json,yml,yaml,bash,sh}\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@types/fs-extra": "^8.1.0",
+        "@types/node": "^13.13.1",
+        "fs-extra": "^9.0.0",
+        "next-standard-version": "^2.1.2",
+        "standard-version": "^7.1.0",
+        "ts-json-schema-generator": "^0.67.1",
+        "ts-node": "^8.9.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "commitizen": "^4.0.4",
+        "cz-conventional-changelog": "^3.1.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.1.7",
+        "prettier": "^2.0.5",
+        "sort-package-json": "^1.42.0",
+        "typescript": "^3.8.3"
+    }
+}

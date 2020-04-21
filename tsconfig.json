@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "es5",
+        "module": "CommonJS",
+        "lib": ["esnext"],
+        "strict": true,
+        "sourceMap": true,
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "rootDir": "src",
+        "alwaysStrict": true,
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "esModuleInterop": true,
+        "outDir": "lib"
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}
