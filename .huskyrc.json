@@ -1,6 +1,6 @@
 {
     "hooks": {
-        "pre-commit": "npm run build && lint-staged",
+        "pre-commit": "npm run build && git add schemas src/version.ts && lint-staged",
         "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
 }
