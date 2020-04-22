@@ -4,9 +4,11 @@ on:
     push:
         branches:
             - master
+            - next
 
 env:
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    BRANCH: ${{ github.ref }}
 
 jobs:
     build-and-deploy:

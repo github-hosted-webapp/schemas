@@ -1,6 +1,6 @@
 import { generateDocs } from "./helpers/generateDocs";
 
-generateDocs()
+generateDocs(process.env.BRANCH as string)
     .then(() => console.log(`Version file generated successfully`))
     .catch(err => {
         console.log(err);
