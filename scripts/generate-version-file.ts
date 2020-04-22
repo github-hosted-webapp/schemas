@@ -1,6 +1,6 @@
 import { generateVersionFile } from "./helpers/generateVersionFile";
 
-generateVersionFile(process.env.VERSION_FILE_VERSION === "next")
+generateVersionFile(process.env.BRANCH === "refs/heads/next")
     .then(() => console.log(`Version file generated successfully`))
     .catch(err => {
         console.log(err);
