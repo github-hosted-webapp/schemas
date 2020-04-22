@@ -1,5 +1,5 @@
-import {path} from "./helpers/path";
-import {generateSchema} from "./helpers/generateSchemas";
+import { path } from "./helpers/path";
+import { generateSchema } from "./helpers/generateSchemas";
 
 const types = {
     Config: {
@@ -10,6 +10,9 @@ const types = {
     },
     ModelDescriptor: {
         path: path("src/core/ModelDescriptor.ts"),
+    },
+    ModelDescriptors: {
+        path: path("src/core/ModelDescriptors.ts"),
     },
     ModelIndex: {
         path: path("src/core/ModelIndex.ts"),

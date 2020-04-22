@@ -1,9 +1,4 @@
 /**
- * A list of ModelDescriptors
- */
-export type ModelDescriptors = ModelDescriptor[];
-
-/**
  * Describes how a model is stored
  */
 export interface ModelDescriptor {
