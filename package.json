@@ -19,6 +19,7 @@
         "build": "npm run generate:version-file && npm run generate:schemas && npm run format:schemas && tsc",
         "format": "sort-package-json && npm run prettier",
         "format:schemas": "prettier --loglevel warn --write \"schemas/**/*.json\"",
+        "generate:docs": "ts-node scripts/generate-docs.ts",
         "generate:schemas": "ts-node scripts/generate-schemas.ts",
         "generate:version-file": "ts-node scripts/generate-version-file.ts",
         "prettier": "prettier --loglevel warn --write \"**/*.{md,json,yml,yaml,bash,sh}\"",
@@ -27,11 +28,14 @@
     "dependencies": {
         "@types/fs-extra": "^8.1.0",
         "@types/node": "^13.13.1",
+        "@types/shelljs": "^0.8.7",
         "fs-extra": "^9.0.0",
         "next-standard-version": "^2.1.2",
+        "shelljs": "^0.8.3",
         "standard-version": "^7.1.0",
         "ts-json-schema-generator": "^0.67.1",
-        "ts-node": "^8.9.0"
+        "ts-node": "^8.9.0",
+        "typescript": "^3.8.3"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
@@ -41,7 +45,6 @@
         "husky": "^4.2.5",
         "lint-staged": "^10.1.7",
         "prettier": "^2.0.5",
-        "sort-package-json": "^1.42.0",
-        "typescript": "^3.8.3"
+        "sort-package-json": "^1.42.0"
     }
 }
