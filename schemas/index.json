@@ -1,0 +1,7 @@
+{
+    "Config": "Config.json",
+    "FileIndex": "FileIndex.json",
+    "ModelDescriptor": "ModelDescriptor.json",
+    "ModelDescriptors": "ModelDescriptors.json",
+    "ModelIndex": "ModelIndex.json"
+}
