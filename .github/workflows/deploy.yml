@@ -23,6 +23,7 @@ jobs:
               run: |
                   npm ci --production
                   npm run build
+                  npm run generate:docs
 
             - name: Deploy 🚀
               uses: peaceiris/actions-gh-pages@v3
