@@ -13,6 +13,7 @@ export async function generateDocs(branch: string) {
         shell.mkdir("-p", latestPath);
         shell.cp("-rf", path("docs/**/*.md"), latestPath);
         shell.cp("-rf", path("schemas/*"), latestPath);
+        shell.cp("-rf", path("schemas/*"), path("docs"));
     }
 
     shell.rm("-rf", versionedPath, branchPath);
