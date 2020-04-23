@@ -1,10 +1,10 @@
+import { mkdirp, writeFile } from "fs-extra";
+import { JSONSchema7 } from "json-schema";
 import shell from "shelljs";
 import * as tsj from "ts-json-schema-generator";
-import { mkdirp, writeFile } from "fs-extra";
 import { basename, dirname } from "path";
 import { path } from "./path";
 import { homepage } from "../../package.json";
-import { JSONSchema7 } from "json-schema";
 
 const tsconfigPath = path("tsconfig.json");
 const getSchemaFileName = (type: string) => `${type}.schema.json`;
