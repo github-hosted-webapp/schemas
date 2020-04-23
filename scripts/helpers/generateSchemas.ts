@@ -1,40 +1,87 @@
+import shell from "shelljs";
 import * as tsj from "ts-json-schema-generator";
 import { mkdirp, writeFile } from "fs-extra";
-import { dirname } from "path";
+import { basename, dirname } from "path";
 import { path } from "./path";
+import { homepage } from "../../package.json";
+import { JSONSchema7 } from "json-schema";
 
 const tsconfigPath = path("tsconfig.json");
-const schemaPath = (type: string) => path(`schemas/${type}.json`);
+const getSchemaFileName = (type: string) => `${type}.schema.json`;
+const getSchemaPath = (type: string) =>
+    path(`schemas/${getSchemaFileName(type)}`);
+const createSchemaIdGetter = (version: string) => (type: string) =>
+    `${homepage}/${version}/${getSchemaFileName(type)}`;
 
-export type Types = { [name: string]: Partial<tsj.Config> };
+export async function generateSchemas(version: string) {
+    const index: { [type: string]: string } = {};
+    const filePaths = shell
+        .ls(path("src/schemas"))
+        .filter(fileName => fileName !== "index.ts")
+        .map(fileName => path(`src/schemas`, fileName));
 
-export async function generateSchema(types: Types) {
-    const index: { [name: string]: string } = {};
-    const schemasMd = [`# Schemas`, ``];
+    for (const filePath of filePaths) {
+        const type = basename(filePath, ".ts");
 
-    for (const [type, config] of Object.entries(types)) {
-        const destination = schemaPath(type);
-        const schema = tsj
-            .createGenerator({
+        const schema = generateSchema(
+            {
                 type,
                 tsconfig: tsconfigPath,
                 expose: "export",
                 jsDoc: "extended",
                 strictTuples: true,
-                topRef: true,
-                ...config,
-            })
-            .createSchema(type);
+                topRef: false,
+                path: filePath,
+            },
+            version,
+        );
 
         const schemaString = JSON.stringify(schema, null, 4);
+        const destination = getSchemaPath(type);
 
         await mkdirp(dirname(destination));
         await writeFile(destination, schemaString);
 
-        index[type] = `${type}.json`;
-        schemasMd.push(`- [${type}](${index[type]})`);
+        index[type] = getSchemaFileName(type);
     }
 
-    await writeFile(schemaPath("index"), JSON.stringify(index, null, 4));
-    await writeFile(path("docs/schemas.md"), schemasMd.join("\n"));
+    await writeFile(path("schemas/index.json"), JSON.stringify(index, null, 4));
+}
+
+function generateSchema(config: tsj.Config, version: string) {
+    if (!config.type) {
+        throw new Error(`Can't generate schema, no type provided.`);
+    }
+
+    const getSchemaId = createSchemaIdGetter(version);
+    const {
+        $schema,
+        $ref,
+        $comment,
+        definitions = {},
+        ...schema
+    } = tsj.createGenerator(config).createSchema(config.type);
+
+    return {
+        $schema,
+        $id: getSchemaId(config.type),
+        $ref,
+        title: config.type,
+        description: (definitions[config.type] as JSONSchema7)?.description,
+        $comment,
+        definitions: (Object.entries(definitions) as [
+            string,
+            JSONSchema7,
+        ][]).reduce(
+            (definitions, [key, definition]) => ({
+                ...definitions,
+                [key]: {
+                    title: definition.title || key,
+                    ...definition,
+                },
+            }),
+            {} as { [name: string]: JSONSchema7 },
+        ),
+        ...schema,
+    };
 }

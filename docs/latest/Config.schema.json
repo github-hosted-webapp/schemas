@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json",
+    "title": "Config",
+    "description": "General configuration",
+    "definitions": {
+        "ModelsConfig": {
+            "title": "ModelsConfig",
+            "type": "object",
+            "properties": {
+                "modelDescriptorsPath": {
+                    "type": "string",
+                    "description": "Path to the models index json (relative to repository root)"
+                },
+                "modelDescriptorsUrl": {
+                    "type": "string",
+                    "description": "URL to the models index json"
+                }
+            },
+            "required": ["modelDescriptorsPath", "modelDescriptorsUrl"],
+            "additionalProperties": false,
+            "description": "Configuration concerning models"
+        },
+        "StorageConfig": {
+            "title": "StorageConfig",
+            "type": "object",
+            "properties": {
+                "rootPath": {
+                    "type": "string",
+                    "description": "Path to the directory files should be stored in (relative to the repository root)"
+                },
+                "baseUrl": {
+                    "type": "string",
+                    "description": "URL to the root of the storage"
+                }
+            },
+            "required": ["rootPath", "baseUrl"],
+            "additionalProperties": false,
+            "description": "Configuration for file storage"
+        }
+    },
+    "type": "object",
+    "properties": {
+        "$schema": { "type": "string", "description": "Schema for the Config" },
+        "schemaVersion": {
+            "type": "string",
+            "enum": ["0.0.0"],
+            "description": "The version of the schema (npm package version)"
+        },
+        "models": {
+            "$ref": "#/definitions/ModelsConfig",
+            "description": "Configuration concerning models"
+        },
+        "storage": {
+            "$ref": "#/definitions/StorageConfig",
+            "description": "Configuration concerning file storage"
+        }
+    },
+    "required": ["$schema", "schemaVersion", "models", "storage"],
+    "additionalProperties": false
+}

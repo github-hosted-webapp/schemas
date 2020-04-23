@@ -1,27 +1,51 @@
 import shell from "shelljs";
 import { path } from "./path";
 import { version } from "../../src/version";
+import { writeFile } from "fs-extra";
+import { basename } from "path";
 
-export async function generateDocs(branch: string) {
-    branch = branch.replace("refs/heads/", "");
-    const versionedPath = path("docs", `v${version}`);
-    const branchPath = path("docs", branch);
+const getArticlesPath = (...segments: string[]) =>
+    path("articles", ...segments);
+const getOutPath = (...segments: string[]) => path("docs", ...segments);
+const getSchemasPath = (...segments: string[]) => path("schemas", ...segments);
 
-    if (branch === "master") {
-        const latestPath = path("docs", `latest`);
-        shell.rm("-rf", latestPath);
-        shell.mkdir("-p", latestPath);
-        shell.cp("-rf", path("docs/**/*.md"), latestPath);
-        shell.cp("-rf", path("schemas/*"), latestPath);
-        shell.cp("-rf", path("schemas/*"), path("docs"));
-    }
+export async function generateDocs() {
+    const latestPath = getOutPath("latest");
+    const versionPath = getOutPath(`v${version}`);
+    const versionGlob = getOutPath(`v${version}`, "./*");
+    const articlesGlob = getArticlesPath("./*");
 
-    shell.rm("-rf", versionedPath, branchPath);
-    shell.mkdir("-p", versionedPath, branchPath);
+    shell.rm("-rf", versionPath);
+    shell.mkdir("-p", versionPath);
+    shell.cp("-Rf", [articlesGlob, getSchemasPath("index.json")], versionPath);
+    generateReference(versionPath);
 
-    shell.cp("-rf", path("docs/*.md"), versionedPath);
-    shell.cp("-rf", path("schemas/*"), versionedPath);
+    shell.rm("-rf", latestPath);
+    shell.mkdir("-p", latestPath);
+    shell.mkdir("-p", latestPath);
+    shell.cp("-Rf", versionGlob, latestPath);
 
-    shell.cp("-rf", path("docs/*.md"), branchPath);
-    shell.cp("-rf", path("schemas/*"), branchPath);
+    await generateVersionsMd();
+}
+
+async function generateVersionsMd() {
+    const versions = shell.ls("-d", getOutPath("./*/"));
+
+    await writeFile(
+        getOutPath("versions.md"),
+        [
+            `# Versions`,
+            ``,
+            ...versions
+                .map(path => basename(path))
+                .map(version => `- [${version}](${version}/README.md)`),
+        ].join("\n"),
+    );
+}
+
+function generateReference(outDir: string) {
+    const jsonschema2md = path("node_modules/.bin/jsonschema2md");
+    shell.exec(
+        `${jsonschema2md} -d schemas -o ${outDir}/reference -x ${outDir}`,
+    );
 }

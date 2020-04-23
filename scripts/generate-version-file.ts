@@ -1,9 +1,20 @@
+import semver from "semver";
 import { generateVersionFile } from "./helpers/generateVersionFile";
+import { createErrorHandler } from "./helpers/createErrorHandler";
+import { version } from "../src/version";
 
-generateVersionFile(process.env.BRANCH === "refs/heads/next")
+const newVersion = process.argv[2];
+
+const fail = createErrorHandler("generate version file");
+
+if (!newVersion || newVersion.startsWith("v") || !semver.valid(newVersion)) {
+    fail(new Error(`Invalid version:`));
+}
+
+if (newVersion === version) {
+    process.exit(0);
+}
+
+generateVersionFile(newVersion)
     .then(() => console.log(`Version file generated successfully`))
-    .catch(err => {
-        console.log(err);
-        console.error(`Failed to generate version file:`, err.message);
-        process.exit(1);
-    });
+    .catch(fail);

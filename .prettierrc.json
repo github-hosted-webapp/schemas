@@ -15,7 +15,7 @@
             }
         },
         {
-            "files": "*.json",
+            "files": ["*.json", ".czrc"],
             "options": {
                 "parser": "json",
                 "tabWidth": 4,

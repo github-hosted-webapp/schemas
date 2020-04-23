@@ -1,0 +1,10 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/FileIndex.schema.json",
+    "title": "FileIndex",
+    "definitions": {},
+    "type": "array",
+    "items": {
+        "type": "string"
+    }
+}

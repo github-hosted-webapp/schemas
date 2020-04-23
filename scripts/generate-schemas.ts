@@ -1,27 +1,11 @@
-import { path } from "./helpers/path";
-import { generateSchema } from "./helpers/generateSchemas";
+///<reference path="global.d.ts"/>
 
-const types = {
-    Config: {
-        path: path("src/core/Config.ts"),
-    },
-    FileIndex: {
-        path: path("src/core/FileIndex.ts"),
-    },
-    ModelDescriptor: {
-        path: path("src/core/ModelDescriptor.ts"),
-    },
-    ModelDescriptors: {
-        path: path("src/core/ModelDescriptors.ts"),
-    },
-    ModelIndex: {
-        path: path("src/core/ModelIndex.ts"),
-    },
-};
+import { generateSchemas } from "./helpers/generateSchemas";
+import { createErrorHandler } from "./helpers/createErrorHandler";
+import { version } from "../src/version";
 
-generateSchema(types)
+const fail = createErrorHandler("generate schemas");
+
+generateSchemas(`v${version}`)
     .then(() => console.log(`Schemas generated successfully`))
-    .catch(err => {
-        console.error(`Failed to generate schemas:`, err.message);
-        process.exit(1);
-    });
+    .catch(fail);
