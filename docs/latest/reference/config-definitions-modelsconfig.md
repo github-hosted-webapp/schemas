@@ -1,7 +1,7 @@
 # ModelsConfig Schema
 
 ```txt
-https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/properties/models
+https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/ModelsConfig
 ```
 
 Configuration concerning models
@@ -10,7 +10,7 @@ Configuration concerning models
 | :-- | --- | --- | --- | :-- | --- | --- | --- |
 | Can be instantiated | No | Unknown status | No | Forbidden | Forbidden | none | [Config.schema.json\*](../Config.schema.json "open original schema") |
 
-## models Type
+## ModelsConfig Type
 
 `object` ([ModelsConfig](config-definitions-modelsconfig.md))
 

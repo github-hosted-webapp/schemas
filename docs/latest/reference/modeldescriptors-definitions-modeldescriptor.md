@@ -1,7 +1,7 @@
 # ModelDescriptor Schema
 
 ```txt
-https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json#/items
+https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json#/definitions/ModelDescriptor
 ```
 
 Describes how a model is stored
@@ -10,7 +10,7 @@ Describes how a model is stored
 | :-- | --- | --- | --- | :-- | --- | --- | --- |
 | Can be instantiated | No | Unknown status | No | Forbidden | Forbidden | none | [ModelDescriptors.schema.json\*](../ModelDescriptors.schema.json "open original schema") |
 
-## items Type
+## ModelDescriptor Type
 
 `object` ([ModelDescriptor](modeldescriptors-definitions-modeldescriptor.md))
 

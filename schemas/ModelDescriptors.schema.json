@@ -3,6 +3,10 @@
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json",
     "title": "ModelDescriptors",
     "description": "A list of ModelDescriptors",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/ModelDescriptor"
+    },
     "definitions": {
         "ModelDescriptor": {
             "title": "ModelDescriptor",
@@ -44,9 +48,5 @@
             "additionalProperties": false,
             "description": "Describes how a model is stored"
         }
-    },
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/ModelDescriptor"
     }
 }

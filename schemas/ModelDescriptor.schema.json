@@ -3,7 +3,6 @@
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptor.schema.json",
     "title": "ModelDescriptor",
     "description": "Describes how a model is stored",
-    "definitions": {},
     "type": "object",
     "properties": {
         "$schema": {
@@ -32,5 +31,6 @@
         }
     },
     "required": ["$schema", "id", "name", "schemaUrl", "indexUrl", "indexPath"],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {}
 }

@@ -1,7 +1,7 @@
 # FileMetadata Schema
 
 ```txt
-https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json#/properties/metadata
+https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json#/definitions/FileMetadata
 ```
 
 Metadata extracted from the file
@@ -10,7 +10,7 @@ Metadata extracted from the file
 | :-- | --- | --- | --- | :-- | --- | --- | --- |
 | Can be instantiated | No | Unknown status | No | Forbidden | Forbidden | none | [File.schema.json\*](../File.schema.json "open original schema") |
 
-## metadata Type
+## FileMetadata Type
 
 `object` ([FileMetadata](file-definitions-filemetadata.md))
 

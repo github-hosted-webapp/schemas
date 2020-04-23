@@ -3,6 +3,21 @@
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json",
     "title": "File",
     "description": "Model that represents a",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "Link to the model schema"
+        },
+        "id": {
+            "type": "string",
+            "description": "UUID that identifies the model"
+        },
+        "path": { "type": "string" },
+        "metadata": { "$ref": "#/definitions/FileMetadata" }
+    },
+    "required": ["$schema", "id", "metadata", "path"],
+    "additionalProperties": false,
     "definitions": {
         "FileMetadata": {
             "title": "FileMetadata",
@@ -21,20 +36,5 @@
             "additionalProperties": false,
             "description": "Metadata extracted from the file"
         }
-    },
-    "type": "object",
-    "properties": {
-        "$schema": {
-            "type": "string",
-            "description": "Link to the model schema"
-        },
-        "id": {
-            "type": "string",
-            "description": "UUID that identifies the model"
-        },
-        "path": { "type": "string" },
-        "metadata": { "$ref": "#/definitions/FileMetadata" }
-    },
-    "required": ["$schema", "id", "metadata", "path"],
-    "additionalProperties": false
+    }
 }

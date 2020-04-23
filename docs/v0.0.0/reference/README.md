@@ -14,13 +14,13 @@
 
 ### Objects
 
--   [FileMetadata](./file-definitions-filemetadata.md "Metadata extracted from the file") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json#/definitions/FileMetadata`
 -   [FileMetadata](./file-properties-filemetadata.md "Metadata extracted from the file") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json#/properties/metadata`
--   [ModelDescriptor](./modeldescriptors-definitions-modeldescriptor.md "Describes how a model is stored") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json#/definitions/ModelDescriptor`
+-   [FileMetadata](./file-definitions-filemetadata.md "Metadata extracted from the file") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json#/definitions/FileMetadata`
 -   [ModelDescriptor](./modeldescriptors-modeldescriptor.md "Describes how a model is stored") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json#/items`
--   [ModelsConfig](./config-definitions-modelsconfig.md "Configuration concerning models") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/ModelsConfig`
+-   [ModelDescriptor](./modeldescriptors-definitions-modeldescriptor.md "Describes how a model is stored") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelDescriptors.schema.json#/definitions/ModelDescriptor`
 -   [ModelsConfig](./config-properties-modelsconfig.md "Configuration concerning models") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/properties/models`
--   [StorageConfig](./config-definitions-storageconfig.md "Configuration for file storage") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/StorageConfig`
+-   [ModelsConfig](./config-definitions-modelsconfig.md "Configuration concerning models") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/ModelsConfig`
 -   [StorageConfig](./config-properties-storageconfig.md "Configuration for file storage") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/properties/storage`
+-   [StorageConfig](./config-definitions-storageconfig.md "Configuration for file storage") – `https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/StorageConfig`
 
 ### Arrays

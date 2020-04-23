@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/ModelIndex.schema.json",
     "title": "ModelIndex",
-    "definitions": {},
     "type": "array",
-    "items": { "type": "string" }
+    "items": { "type": "string" },
+    "definitions": {}
 }

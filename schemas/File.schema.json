@@ -3,25 +3,6 @@
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/File.schema.json",
     "title": "File",
     "description": "Model that represents a",
-    "definitions": {
-        "FileMetadata": {
-            "title": "FileMetadata",
-            "type": "object",
-            "properties": {
-                "filename": {
-                    "type": "string",
-                    "description": "Original filename"
-                },
-                "mimeType": {
-                    "type": "string",
-                    "description": "Mime-type of the file"
-                }
-            },
-            "required": ["filename", "mimeType"],
-            "additionalProperties": false,
-            "description": "Metadata extracted from the file"
-        }
-    },
     "type": "object",
     "properties": {
         "$schema": {
@@ -40,5 +21,24 @@
         }
     },
     "required": ["$schema", "id", "metadata", "path"],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {
+        "FileMetadata": {
+            "title": "FileMetadata",
+            "type": "object",
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "description": "Original filename"
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "Mime-type of the file"
+                }
+            },
+            "required": ["filename", "mimeType"],
+            "additionalProperties": false,
+            "description": "Metadata extracted from the file"
+        }
+    }
 }

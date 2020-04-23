@@ -1,7 +1,7 @@
 # StorageConfig Schema
 
 ```txt
-https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/properties/storage
+https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json#/definitions/StorageConfig
 ```
 
 Configuration for file storage
@@ -10,7 +10,7 @@ Configuration for file storage
 | :-- | --- | --- | --- | :-- | --- | --- | --- |
 | Can be instantiated | No | Unknown status | No | Forbidden | Forbidden | none | [Config.schema.json\*](../Config.schema.json "open original schema") |
 
-## storage Type
+## StorageConfig Type
 
 `object` ([StorageConfig](config-definitions-storageconfig.md))
 

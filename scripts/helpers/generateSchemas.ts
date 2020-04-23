@@ -69,6 +69,7 @@ function generateSchema(config: tsj.Config, version: string) {
         title: config.type,
         description: (definitions[config.type] as JSONSchema7)?.description,
         $comment,
+        ...schema,
         definitions: (Object.entries(definitions) as [
             string,
             JSONSchema7,
@@ -82,6 +83,5 @@ function generateSchema(config: tsj.Config, version: string) {
             }),
             {} as { [name: string]: JSONSchema7 },
         ),
-        ...schema,
     };
 }

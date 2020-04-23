@@ -3,6 +3,28 @@
     "$id": "https://github-hosted-webapp.github.io/schemas/v0.0.0/Config.schema.json",
     "title": "Config",
     "description": "General configuration",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "Schema for the Config"
+        },
+        "schemaVersion": {
+            "type": "string",
+            "enum": ["0.0.0"],
+            "description": "The version of the schema (npm package version)"
+        },
+        "models": {
+            "$ref": "#/definitions/ModelsConfig",
+            "description": "Configuration concerning models"
+        },
+        "storage": {
+            "$ref": "#/definitions/StorageConfig",
+            "description": "Configuration concerning file storage"
+        }
+    },
+    "required": ["$schema", "schemaVersion", "models", "storage"],
+    "additionalProperties": false,
     "definitions": {
         "ModelsConfig": {
             "title": "ModelsConfig",
@@ -38,27 +60,5 @@
             "additionalProperties": false,
             "description": "Configuration for file storage"
         }
-    },
-    "type": "object",
-    "properties": {
-        "$schema": {
-            "type": "string",
-            "description": "Schema for the Config"
-        },
-        "schemaVersion": {
-            "type": "string",
-            "enum": ["0.0.0"],
-            "description": "The version of the schema (npm package version)"
-        },
-        "models": {
-            "$ref": "#/definitions/ModelsConfig",
-            "description": "Configuration concerning models"
-        },
-        "storage": {
-            "$ref": "#/definitions/StorageConfig",
-            "description": "Configuration concerning file storage"
-        }
-    },
-    "required": ["$schema", "schemaVersion", "models", "storage"],
-    "additionalProperties": false
+    }
 }
